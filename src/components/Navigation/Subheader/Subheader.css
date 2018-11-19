@@ -9,3 +9,90 @@
   box-sizing: border-box;
   z-index: 90;
 }
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  .Subheader{
+    display: none;
+    visibility: hidden;
+    height: 50px;
+    width: 100%;
+    /* position: fixed; */
+    background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    z-index: 90;
+  }
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .Subheader{
+    height: 50px;
+    width: 100%;
+    /* position: fixed; */
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    z-index: 90;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .Subheader{
+    height: 50px;
+    width: 100%;
+    /* position: fixed; */
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    z-index: 90;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  .Subheader{
+    height: 50px;
+    width: 100%;
+    /* position: fixed; */
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    z-index: 90;
+  }
+  
+}

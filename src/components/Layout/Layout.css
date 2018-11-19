@@ -3,6 +3,71 @@
   /* padding-top: 0; */
   background-color: #191919;
   color: white;
-  /* height: 100vh; */
+  height: 100%;
   border: 1px solid grey;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  .Content{
+    margin-top: 0px;  
+    background-color: #191919;
+    color: white;
+    height: 100vh;
+    border: 1px solid grey;
+  }
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .Content{
+    margin-top: 0px;  
+    background-color: #191919;
+    color: white;
+    border: 1px solid grey;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .Content{
+    margin-top: 0px;  
+    background-color: #191919;
+    color: white;
+    border: 1px solid grey;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  .Content{
+    margin-top: 0px;  
+    background-color: #191919;
+    color: white;
+    border: 1px solid grey;
+  }
+  
 }
