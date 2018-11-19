@@ -1,0 +1,13 @@
+.Main{
+}
+
+.Main .video{
+  padding: 5px 9px 5px 5px;
+}
+
+.Main iframe {
+  border-width: 0;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial;
+}
