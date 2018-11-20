@@ -28,7 +28,7 @@ export class Videos extends Component {
     return (
       <div className={classes.Videos}>
         {this.state.videos.map((video,index) => {
-        return <Video title={video.title} youtube_video_id={video.youtube_video_id}/>
+        return <Video key={video.id} title={video.title} youtube_video_id={video.youtube_video_id}/>
         })}
       </div>
     )

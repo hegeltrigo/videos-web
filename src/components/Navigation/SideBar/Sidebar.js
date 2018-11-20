@@ -2,15 +2,25 @@ import React from 'react'
 import classes from './Sidebar.css'
 import Logo from '../../Logo/Logo'
 import NavigationItems from '../NavigationItems/NavigationItems'
+import Backdrop from '../../../UI/Backdrop/Backdrop'
+import Aux from '../../../hoc/Aux'
 
-const sidebar = () => {
+const sidebar = (props) => {
+  let attachedClass = [classes.Sidebar, classes.Close];
+  if(props.open){
+    attachedClass = [classes.Sidebar, classes.Open];
+  }
   return (
-    <div className={classes.Sidebar}>
-      <Logo/>
-      <nav>
-        <NavigationItems/>
-      </nav>
-    </div>
+    <Aux>
+      <Backdrop show={props.open} closed={props.closed}/>
+      <div className={attachedClass.join(' ')}>
+        <Logo/>
+        <nav>
+          <NavigationItems/>
+        </nav>
+      </div>
+    </Aux>
+    
   );
 }
 
