@@ -7,7 +7,7 @@ import Subheader from '../Navigation/Subheader/Subheader'
 const layout = (props) => (
   <Aux>
     <Toolbar></Toolbar>
-    <Subheader></Subheader>
+    {/* <Subheader></Subheader> */}
     <main className={classes.Content}>{props.children}</main>
   </Aux>
   
