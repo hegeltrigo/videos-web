@@ -28,10 +28,7 @@ export class Videos extends Component {
     return (
       <div className={classes.Videos}>
         {this.state.videos.map((video,index) => {
-        //   return <div className={classes.video}>
-        //   <iframe width="100%" height="100%" src={'https://www.youtube.com/embed/' + video.youtube_video_id}> </iframe>
-        // </div>
-        return <Video youtube_video_id={video.youtube_video_id}/>
+        return <Video title={video.title} youtube_video_id={video.youtube_video_id}/>
         })}
       </div>
     )

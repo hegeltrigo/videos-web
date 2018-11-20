@@ -1,7 +1,7 @@
 
 
 .Video{
-  padding: 5px 9px 5px 5px;
+  padding: 5px 9px 10px 5px;
 }
 
 .Video iframe {
@@ -9,6 +9,12 @@
   border-style: inset;
   border-color: initial;
   border-image: initial;
+}
+
+.Video .Title{
+  font-size: 13px;
+  text-transform: capitalize;
+  font-weight: bold;
 }
 
 /* 
@@ -19,11 +25,18 @@
 @media (min-width: 1281px) {
   
   .Video{
-    /* padding: 5px 9px 5px 5px; */
+    /* padding: 5px 9px 10px 5px; */
    
     flex-grow: 1;
-    flex-basis: 250px;
+    flex-basis: 200px;
     margin: 5px;
+    margin-bottom: 10px;
+  }
+
+  .Video .Title{
+    font-size: 12px;
+    text-transform: capitalize;
+    font-weight: bold;
   }
   
 }
