@@ -1,17 +1,17 @@
-.Main{
-  margin-top: 10px;
+.Videos{
+  /* margin-top: 10px; */
 }
 
-.Main .video{
+/* .Videos .video{
   padding: 5px 9px 5px 5px;
 }
 
-.Main iframe {
+.Videos iframe {
   border-width: 0;
   border-style: inset;
   border-color: initial;
   border-image: initial;
-}
+} */
 
 /* 
   ##Device = Desktops
@@ -20,7 +20,7 @@
 
 @media (min-width: 1281px) {
   
-  .Main{
+  .Videos{
     margin-top: 10px;
     padding-left: 60px;
     padding-right: 60px;
@@ -28,13 +28,12 @@
     flex-wrap: wrap;
   }
   
-  .Main .video{
-    /* padding: 5px 9px 5px 5px; */
+  /* .Videos .video{
    
     flex-grow: 1;
     flex-basis: 250px;
     margin: 5px;
-  }
+  } */
   
 }
 
