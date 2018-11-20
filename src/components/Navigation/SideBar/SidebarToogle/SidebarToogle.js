@@ -1,8 +1,9 @@
 import React from 'react'
-
+import hamburguer from '../../../../assets/images/hamburguer.png'
+import classes  from './SidebarToogle.css'
 const sidebarToogle = (props) => (
-  <div onClick={props.clicked}>
-      MENU
+  <div className={classes.SidebarToogle} onClick={props.clicked}>
+      <img height="30" width="30" src={hamburguer} alt="Menu"/>
   </div>
 );
 
