@@ -2,17 +2,6 @@
   /* margin-top: 10px; */
 }
 
-/* .Videos .video{
-  padding: 5px 9px 5px 5px;
-}
-
-.Videos iframe {
-  border-width: 0;
-  border-style: inset;
-  border-color: initial;
-  border-image: initial;
-} */
-
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -26,15 +15,7 @@
     padding-right: 60px;
     display: flex;
     flex-wrap: wrap;
-  }
-  
-  /* .Videos .video{
-   
-    flex-grow: 1;
-    flex-basis: 250px;
-    margin: 5px;
-  } */
-  
+  }  
 }
 
 /* 

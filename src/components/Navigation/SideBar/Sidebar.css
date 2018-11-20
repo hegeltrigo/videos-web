@@ -1,0 +1,68 @@
+.Sidebar{
+  position: fixed;
+  width: 280px;
+  max-width: 70%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background: grey;
+  padding: 32px 16px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+}
+
+.Open{
+  transform: translateX(0);
+}
+
+.Close{
+  transform: translateX(-100%)
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  .Sidebar{
+    display: none;
+  } 
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .Sidebar{
+    display: none;
+  } 
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .Sidebar{
+    display: none;
+  }   
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .Sidebar{
+    display: none;
+  }   
+}
