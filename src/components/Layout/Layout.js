@@ -7,17 +7,24 @@ import Sidebar from '../Navigation/SideBar/Sidebar'
 
 class Layout extends Component{
   state = {
-    showSidebar: true
+    showSidebar: false
   }
 
   sidebarClosedHandler = () =>{
     this.setState({showSidebar: false})
   }
 
+  sidebarToogleHandler = () => {
+    this.setState((prevState) => {
+      return {showSidebar: !this.state.showSidebar}
+    });
+
+  }
+
   render(){
     return(
       <Aux>
-        <Toolbar/>
+        <Toolbar SidebarToogleClicker={this.sidebarToogleHandler}/>
         <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler}/>
         <main className={classes.Content}>{this.props.children}</main>
       </Aux>

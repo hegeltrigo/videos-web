@@ -12,7 +12,7 @@ const sidebar = (props) => {
   }
   return (
     <Aux>
-      <Backdrop show={props.open} closed={props.closed}/>
+      <Backdrop show={props.open} clicked={props.closed}/>
       <div className={attachedClass.join(' ')}>
         <Logo/>
         <nav>
