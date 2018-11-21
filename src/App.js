@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout/Layout';
 import Videos from './containers/Videos/Videos'
+import {Route} from 'react-router-dom'
+import NewVideo  from './containers/Videos/NewVideo/NewVideo';
+import { MyVideos } from './containers/Videos/MyVideos/MyVideos';
+import Login from './containers/users/Login/Login'
 
 class App extends Component {
 
@@ -8,7 +12,11 @@ class App extends Component {
     return (
       <div>
          <Layout>
-           <Videos/>
+           <Route path="/" exact component={Videos}/>
+           <Route path="/newVideo" component={NewVideo}/>
+           <Route path="/MyVideos" component={MyVideos}/>
+           <Route path="/Login" component={Login}/>
+
          </Layout>
       </div>
     );
