@@ -7,6 +7,8 @@ const API = 'http://localhost:3001/api/v1'
 //Setting the todos URI
 
 const VIDEOS_API = `${API}/videos`
+const USERS_API = `${API}/users`
+
 
 // The CRUD Operations of the Todo Resource.
 
@@ -34,6 +36,17 @@ const getAllVideos = () => {
 // const removeTodo = todo => {
 //     return HttpClient.delete(`${TODO_API}/${todo._id}`)
 // }
+
+// Authentication
+
+const login = (email,password) => {
+  return HttpClient.post(`${USERS_API}/sign_in`,{
+    user: {
+      email: email,
+      password: password
+    }
+  })
+}
 
 
 //Encapsulating in a JSON object
