@@ -1,43 +1,39 @@
 import React, { Component } from 'react'
 import classes from './Videos.css'
-import axios from '../../axios.videos';
 import Video from '../../components/Video/Video'
 import Spinner from '../../UI/Spinner/Spinner'
-// import *  as actionTypes from '../../store/actions';
-// import PropTypes from 'prop-types'
-// import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as videosActions from '../../store/actions/videosActions'
+import { bindActionCreators } from 'redux'
 
 export class Videos extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   // static propTypes = {
   //   prop: PropTypes
   // }
   
-  state = {
-    videos: [],
-    loading: true
-  }
+  // state = {
+  //   //videos: [],
+  //   loading: true
+  // }
 
   componentDidMount() {
-    axios.get(`videos`)
-      .then(res => {
-        const videos = res.data;
-        this.setState({ videos: videos, loading: false });
-      })
-      .catch( error => {
-        this.setState({ loading: false });
-
-      });
+    this.props.actions.GetAllVideos()
+    // this.setState({loading: false})
   }
-
-  
 
   render() {
     let content;
-    if(this.state.loading){
+    if(this.props.loading){
       content = <Spinner/>;
     }
     else{
-      content = this.state.videos.map((video,index) => {
+      content = this.props.vids.map((video,index) => {
          return <Video key={video.id} title={video.title} youtube_video_id={video.youtube_video_id}/>
        }); 
     }
@@ -49,14 +45,28 @@ export class Videos extends Component {
   }
 }
 
-export default Videos;
+// Videos.propTypes = {
+//   actions: PropTypes.object.isRequired,
+//   videos: PropTypes.array.isRequired
+// }
 
-// // const mapStateToProps = (state) => ({
-//     vids = state.videos
-// // })
 
-// // const mapDispatchToProps = {
-//     getVideos: () => dispatch({type: actionTypes.A})
-// // }
+// This maps the state to the property of the component
 
-// // export default connect(mapStateToProps, mapDispatchToProps)(Videos)
+function mapStateToProps(state, ownProps) {
+  console.log('estado tu propiedades', state)
+  return {
+      vids: state.VideoListReducer.videos,
+      loading: state.VideoListReducer.loading
+  }
+}
+
+// This maps the dispatch to the property of the component
+
+function mapDispatchToProps(dispatch) {
+  return {
+      actions: bindActionCreators(videosActions, dispatch)
+  }
+}
+
+ export default connect(mapStateToProps, mapDispatchToProps)(Videos);

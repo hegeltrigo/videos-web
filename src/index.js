@@ -4,12 +4,21 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux'
-import {createStore} from 'redux';
-
 import * as serviceWorker from './serviceWorker';
-import reducer from './store/reducer';
 
-const store = createStore(reducer);
+import { configureStore } from './store/configureStore'
+// import * as VideosActions from './store/actions/videosActions'
+
+
+// Create a Store from the Configuration, we can pass a Initial State here
+
+const store = configureStore()
+
+// At first dispatch a Get Todos Actions, So we'll recieve the Todos 
+// fetched from the server at the start of the app
+
+// store.dispatch(VideosActions.GetAllVideos());
+
 
 const app = (
   <Provider store={store}>
