@@ -1,10 +1,12 @@
 import * as actionTypes from '../actions/actionTypes'
 
+
+let user = JSON.parse(localStorage.getItem('user'));
+
 const initialState = {
   loading: false,
-  loggedIn: false,
+  loggedIn: user ? true : false,
   user: null,
-  token: null,
   message: null
 }
 
@@ -22,7 +24,6 @@ export const authentication = (state = initialState, action) => {
         loggedIn: true,
         loading: false,
         user: action.response.data,
-        token: action.response.headers.authorization,
         message: 'Login Success'
       }
     case actionTypes.LOGIN_FAILURE:
