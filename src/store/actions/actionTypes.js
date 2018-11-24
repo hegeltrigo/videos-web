@@ -8,6 +8,8 @@ export const LOGIN_REQUEST = "LOGIN_REQUEST"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
 
+export const LOGOUT = "LOGOUT"
+
 //Create
 // export const CREATE_TODO = '[Todo] CREATE_TODO' 
 // export const CREATE_TODO_SUCCESS = '[Todo] CREATE_TODO_SUCCESS' 

@@ -1,16 +1,16 @@
-import * as actionTypes from '../actions/actionTypes'
+import {videoTypes} from '../types'
 
 export const VideoListReducer = (state = {videos: [], loading: true}, action) => {
     switch(action.type){
 
-      case actionTypes.GET_ALL_VIDEOS_SUCCESS:
+      case videoTypes.GET_ALL_VIDEOS_SUCCESS:
         return {
           ...state,
           videos: action.videos,
           loading: false
         }
 
-      case actionTypes.IS_LOADING_VIDEOS:
+      case videoTypes.IS_LOADING_VIDEOS:
         return{
           ...state,
           loading: true

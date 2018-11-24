@@ -1,5 +1,4 @@
-import * as actionTypes from '../actions/actionTypes'
-
+import {userTypes} from '../types'
 
 let user = JSON.parse(localStorage.getItem('user'));
 
@@ -12,13 +11,13 @@ const initialState = {
 
 export const authentication = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_REQUEST:
+    case userTypes.LOGIN_REQUEST:
       return { 
         ...state,
         loading: true,
         message: 'Login Request' 
       }
-    case actionTypes.LOGIN_SUCCESS:
+    case userTypes.LOGIN_SUCCESS:
       return {
         ...state,
         loggedIn: true,
@@ -26,7 +25,7 @@ export const authentication = (state = initialState, action) => {
         user: action.response.data,
         message: 'Login Success'
       }
-    case actionTypes.LOGIN_FAILURE:
+    case userTypes.LOGIN_FAILURE:
       return {
         ...state,
         loading: false,

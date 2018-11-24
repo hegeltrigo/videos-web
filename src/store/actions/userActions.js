@@ -1,6 +1,5 @@
 import { UserEndpoints } from "../../api/userEndpoints";
-import * as actionTypes from './actionTypes'
-import  { history }  from "../../helpers";
+import { userTypes } from '../types'
 
 export const login = (user) => {
   return (dispatch) => {
@@ -10,31 +9,20 @@ export const login = (user) => {
           data["token"] = res.headers.authorization
           localStorage.setItem('user', JSON.stringify(data));
           return dispatch(loginSuccess(res));
-          // history.push('/');
-
-
-      }).catch( (e) => {
+      }).catch((e) => {
         console.log(e);
       })
   }
+
+  const loginRequest = () => { return { type: userTypes.LOGIN_REQUEST }}
+  const loginSuccess = (response) => { return { type: userTypes.LOGIN_SUCCESS, response } }
+  const loginFailure = ()=> { return { type: userTypes.LOGIN_FAILURE } }
 }
 
-export const loginRequest = () => {
-  return {
-    type: actionTypes.LOGIN_REQUEST
-  }
+export const logout = () => {
+  // userService.logout();
+  return { type: userTypes.LOGOUT };
 }
 
-export const loginSuccess = (response)=> {
-  return {
-    type: actionTypes.LOGIN_SUCCESS,
-    response
-  }
-}
 
-export const loginFailure = ()=> {
-  return {
-    type: actionTypes.LOGIN_FAILURE,
-  }
-}
 

@@ -6,6 +6,11 @@ import classes from './Login.css'
 import Button from '../../../UI/Button/Button'
 import Logo from '../../../components/Logo/Logo'
 
+import  { history }  from "../../../helpers";
+import { Redirect } from 'react-router-dom'
+
+
+
 export class Login extends Component {
   // static propTypes = {
   //   prop: PropTypes
@@ -24,6 +29,13 @@ export class Login extends Component {
 
   render() {
     const { authentication } = this.props
+    if(authentication.loggedIn)
+    {
+      console.log('ENTRO')
+      return <Redirect to='/' />
+
+    }
+
     return (
       <div className={classes.Login}>
         <form onSubmit={this.handleSubmit} className={classes.form}>

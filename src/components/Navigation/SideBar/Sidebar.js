@@ -16,7 +16,7 @@ const sidebar = (props) => {
       <div className={attachedClass.join(' ')}>
         <Logo/>
         <nav>
-          <NavigationItems/>
+          <NavigationItems authentication={props.authentication}/>
         </nav>
       </div>
     </Aux>

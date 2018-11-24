@@ -4,13 +4,16 @@ import classes from './Layout.css'
 import Toolbar from '../Navigation/Toolbar/Toolbar'
 // import Subheader from '../Navigation/Subheader/Subheader'
 import Sidebar from '../Navigation/SideBar/Sidebar'
+import { connect } from 'react-redux'
+
 
 class Layout extends Component{
+
   state = {
     showSidebar: false
   }
 
-  sidebarClosedHandler = () =>{
+  sidebarClosedHandler = () => {
     this.setState({showSidebar: false})
   }
 
@@ -22,14 +25,26 @@ class Layout extends Component{
   }
 
   render(){
+    const { authentication } = this.props
+
     return(
       <Aux>
-        <Toolbar SidebarToogleClicker={this.sidebarToogleHandler}/>
-        <Sidebar open={this.state.showSidebar} closed={this.sidebarClosedHandler}/>
+        <Toolbar authentication={authentication} SidebarToogleClicker={this.sidebarToogleHandler}/>
+        <Sidebar authentication={authentication} open={this.state.showSidebar} closed={this.sidebarClosedHandler}/>
         <main className={classes.Content}>{this.props.children}</main>
       </Aux>
     );
   }
 } 
 
-export default Layout;
+const mapStateToProps = ({ authentication }) => ({ authentication })
+
+const mapDispatchToProps = dispatch => ({
+  // handleOnLogin (form) {
+  //   dispatch(login(form))
+  // }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+
+

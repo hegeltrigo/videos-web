@@ -1,7 +1,7 @@
 //Import the Todo API 
 
 import { VideosApi } from "../../api/videosApi";
-import * as actionTypes from './actionTypes'
+import { videoTypes} from '../types'
  
 
 //Create
@@ -36,14 +36,14 @@ export const GetAllVideos = () => {
 
 export function GetAllVideosSuccess(videos){
     return {
-        type: actionTypes.GET_ALL_VIDEOS_SUCCESS,
+        type: videoTypes.GET_ALL_VIDEOS_SUCCESS,
         videos
     }
 }
 
 export function isLoadingVideos(){
     return {
-      type: actionTypes.IS_LOADING_VIDEOS,
+      type: videoTypes.IS_LOADING_VIDEOS,
       loadind: true
   }
 }
