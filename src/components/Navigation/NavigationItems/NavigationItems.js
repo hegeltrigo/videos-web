@@ -1,11 +1,12 @@
 import React from 'react'
 import classes from './NavigationItems.css'
 import NavigationItem from '../NavigationItems/NavigationItem/NavigationItem';
+import Button from '../../../UI/Button/Button'
 
 const navigationItems = (props) => {
   let content;
   if(props.authentication.loggedIn){
-    content = <NavigationItem link="/logout">Logout</NavigationItem>;;
+    content = <Button buttonType="Success" clicked={props.clickedLogout}>Logout</Button>
   }
   else{
     content = <NavigationItem link="/Login">Login</NavigationItem>;

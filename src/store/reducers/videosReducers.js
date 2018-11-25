@@ -1,6 +1,12 @@
-import {videoTypes} from '../types'
+import { videoTypes } from '../types'
 
-export const VideoListReducer = (state = {videos: [], loading: true}, action) => {
+
+const initialState = {
+  videos: [],
+  loading: true
+}
+
+export const VideoListReducer = (state = initialState, action) => {
     switch(action.type){
 
       case videoTypes.GET_ALL_VIDEOS_SUCCESS:

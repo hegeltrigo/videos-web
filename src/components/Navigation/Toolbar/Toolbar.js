@@ -10,7 +10,7 @@ const toolbar = (props) => {
       <SidebarToogle clicked={props.SidebarToogleClicker}/>
       <Logo></Logo>
       <nav>
-        <NavigationItems authentication={props.authentication}/>
+        <NavigationItems authentication={props.authentication} clickedLogout={props.clickedLogout}/>
       </nav>
     </header>
   );

@@ -1,4 +1,5 @@
 import { HttpClient } from './httpClient' 
+import { authHeader } from '../helpers'
 
 // This is the API. The backend root URL can be set from here.
 const API = 'http://localhost:3001/api/v1'
@@ -17,6 +18,10 @@ const login = (email, password) => {
   })
 }
 
-const UserEndpoints = { login }
+const logout = () => {
+  return HttpClient.delete(`${USERS_API}/sign_out`, {headers: authHeader})
+}
+
+const UserEndpoints = { login, logout }
 
 export { UserEndpoints }

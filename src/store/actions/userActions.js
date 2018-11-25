@@ -13,15 +13,25 @@ export const login = (user) => {
         console.log(e);
       })
   }
-
-  const loginRequest = () => { return { type: userTypes.LOGIN_REQUEST }}
-  const loginSuccess = (response) => { return { type: userTypes.LOGIN_SUCCESS, response } }
-  const loginFailure = ()=> { return { type: userTypes.LOGIN_FAILURE } }
 }
 
+const loginRequest = () => { return { type: userTypes.LOGIN_REQUEST }}
+const loginSuccess = (response) => { return { type: userTypes.LOGIN_SUCCESS, response } }
+const loginFailure = ()=> { return { type: userTypes.LOGIN_FAILURE } }
+
 export const logout = () => {
-  // userService.logout();
-  return { type: userTypes.LOGOUT };
+  localStorage.removeItem('user');
+
+  // return (dispatch) => {
+  //     UserEndpoints.logout().then(res => {
+  //     console.log('ESTO RESPONDIO EL SERVIDOR CON LOGOUT: ', res)
+  //     return dispatch(logoutSuccess);
+  //   }).catch( (e) => {
+  //     console.log(e);
+  //   })
+  // }
+  
+  return { type: userTypes.LOGOUT }
 }
 
 

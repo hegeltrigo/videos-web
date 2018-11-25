@@ -31,6 +31,12 @@ export const authentication = (state = initialState, action) => {
         loading: false,
         message: 'Login Failed'
       }  
+    case userTypes.LOGOUT:
+      return { 
+        ...state,
+        loggedIn: false,
+        user: null
+      }
     default:
       return state
   }

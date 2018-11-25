@@ -4,6 +4,7 @@ import classes from './Layout.css'
 import Toolbar from '../Navigation/Toolbar/Toolbar'
 // import Subheader from '../Navigation/Subheader/Subheader'
 import Sidebar from '../Navigation/SideBar/Sidebar'
+import {logout} from '../../store/actions/userActions'
 import { connect } from 'react-redux'
 
 
@@ -24,13 +25,21 @@ class Layout extends Component{
 
   }
 
+  clickedLogoutHandler = () => {
+
+    const { handleOnLogout } = this.props
+    handleOnLogout()
+    console.log('yeiiiiiiiiiiiiiiiiiiiii vendo del click')
+
+  }
+
   render(){
     const { authentication } = this.props
 
     return(
       <Aux>
-        <Toolbar authentication={authentication} SidebarToogleClicker={this.sidebarToogleHandler}/>
-        <Sidebar authentication={authentication} open={this.state.showSidebar} closed={this.sidebarClosedHandler}/>
+        <Toolbar authentication={authentication} clickedLogout={this.clickedLogoutHandler} SidebarToogleClicker={this.sidebarToogleHandler}/>
+        <Sidebar authentication={authentication} clickedLogout={this.clickedLogoutHandler} open={this.state.showSidebar} closed={this.sidebarClosedHandler}/>
         <main className={classes.Content}>{this.props.children}</main>
       </Aux>
     );
@@ -40,9 +49,9 @@ class Layout extends Component{
 const mapStateToProps = ({ authentication }) => ({ authentication })
 
 const mapDispatchToProps = dispatch => ({
-  // handleOnLogin (form) {
-  //   dispatch(login(form))
-  // }
+  handleOnLogout () {
+    dispatch(logout())
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)
