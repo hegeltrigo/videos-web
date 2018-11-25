@@ -35,7 +35,8 @@ export const authentication = (state = initialState, action) => {
       return { 
         ...state,
         loggedIn: false,
-        user: null
+        user: null,
+        message: 'Logout success'
       }
     default:
       return state

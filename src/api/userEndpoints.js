@@ -7,6 +7,7 @@ const API = 'http://localhost:3001/api/v1'
 //Setting the todos URI
 const USERS_API = `${API}/users`
 
+  let user = JSON.parse(localStorage.getItem('user'));
 
 // Authentication
 const login = (email, password) => {
@@ -19,7 +20,7 @@ const login = (email, password) => {
 }
 
 const logout = () => {
-  return HttpClient.delete(`${USERS_API}/sign_out`, {headers: authHeader})
+  return HttpClient.delete(`${USERS_API}/sign_out`, {headers: authHeader()})
 }
 
 const UserEndpoints = { login, logout }

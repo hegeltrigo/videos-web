@@ -20,19 +20,20 @@ const loginSuccess = (response) => { return { type: userTypes.LOGIN_SUCCESS, res
 const loginFailure = ()=> { return { type: userTypes.LOGIN_FAILURE } }
 
 export const logout = () => {
-  localStorage.removeItem('user');
 
-  // return (dispatch) => {
-  //     UserEndpoints.logout().then(res => {
-  //     console.log('ESTO RESPONDIO EL SERVIDOR CON LOGOUT: ', res)
-  //     return dispatch(logoutSuccess);
-  //   }).catch( (e) => {
-  //     console.log(e);
-  //   })
-  // }
-  
-  return { type: userTypes.LOGOUT }
+  return (dispatch) => {
+      UserEndpoints.logout().then(res => {
+      console.log('ESTO RESPONDIO EL SERVIDOR CON LOGOUT: ', res)
+      localStorage.removeItem('user');
+      return dispatch(logoutSuccess());
+    }).catch((e) => {
+      console.log(e);
+    })
+  }
 }
+
+const logoutSuccess = () => { return { type: userTypes.LOGOUT } }
+
 
 
 

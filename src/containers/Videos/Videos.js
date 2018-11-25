@@ -54,7 +54,6 @@ export class Videos extends Component {
 // This maps the state to the property of the component
 
 function mapStateToProps(state, ownProps) {
-  console.log('estado tu propiedades', state)
   return {
       vids: state.VideoListReducer.videos,
       loading: state.VideoListReducer.loading
