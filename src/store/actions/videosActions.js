@@ -13,7 +13,7 @@ export const GetAllVideos = () => {
 }
 
 const GetAllVideosSuccess = (videos) => {return { type: videoTypes.GET_ALL_VIDEOS_SUCCESS, videos }}
-const isLoadingVideos = () =>{ return { type: videoTypes.IS_LOADING_VIDEOS, loadind: true } }
+const isLoadingVideos = () =>{ return { type: videoTypes.IS_LOADING_VIDEOS, loading: true } }
 
 
 export const GetAllMyVideos = () => {
@@ -26,5 +26,5 @@ export const GetAllMyVideos = () => {
 }
 
 const GetAllMyVideosSuccess = (videos) => {return { type: videoTypes.GET_ALL_MY_VIDEOS_SUCCESS, videos }}
-const isLoadingMyVideos = () =>{ return { type: videoTypes.IS_LOADING_MY_VIDEOS, loadind: true } }
+const isLoadingMyVideos = () =>{ return { type: videoTypes.IS_LOADING_MY_VIDEOS, loading: true } }
 

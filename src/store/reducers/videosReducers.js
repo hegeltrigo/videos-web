@@ -34,11 +34,11 @@ const initialStateMyVideos = {
 export const MyVideoList = (state = initialStateMyVideos, action) => {
   switch(action.type){
 
-    case videoTypes.GET_ALL_MY_VIDEOS:
+    case videoTypes.GET_ALL_MY_VIDEOS_SUCCESS:
       return {
         ...state,
-        videos: action.videos,
-        loading: false
+         videos: action.videos,
+         loading: false 
       }
 
     case videoTypes.IS_LOADING_MY_VIDEOS:

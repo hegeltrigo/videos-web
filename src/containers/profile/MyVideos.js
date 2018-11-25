@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import classes from './Videos.css'
+import classes from './MyVideos.css'
 import Video from '../../components/Video/Video'
 import Spinner from '../../UI/Spinner/Spinner'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 // import * as videosActions from '../../store/actions/videosActions'
 // import { bindActionCreators } from 'redux'
 
-import { GetAllVideos } from '../../store/actions/videosActions'
+import { GetAllMyVideos } from '../../store/actions/videosActions'
 
-export class Videos extends Component {
+export class MyVideos extends Component {
 
   constructor(props) {
     super(props)
@@ -25,10 +24,10 @@ export class Videos extends Component {
   // }
 
   componentDidMount() {
-    const {HandleGetAllVideos} = this.props
-    console.log("PROPIEDADES",this.props)
+    const {HandleGetAllMyVideos} = this.props
+    console.log("PROPIEDADES", this.props)
 
-    HandleGetAllVideos()
+    HandleGetAllMyVideos()
 
     // this.setState({loading: false})
   }
@@ -44,7 +43,7 @@ export class Videos extends Component {
        }); 
     }
     return (
-      <div className={classes.Videos}>
+      <div className={classes.MyVideos}>
         {content}
       </div>
     )
@@ -61,17 +60,17 @@ export class Videos extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-      vids: state.VideoListReducer.videos,
-      loading: state.VideoListReducer.loading
+      vids: state.MyVideoList.videos,
+      loading: state.MyVideoList.loading
   }
 }
 
 // This maps the dispatch to the property of the component
 
 const mapDispatchToProps = dispatch => ({
-  HandleGetAllVideos () {
-    dispatch(GetAllVideos())
+  HandleGetAllMyVideos () {
+    dispatch(GetAllMyVideos())
   }
 })
 
- export default connect(mapStateToProps, mapDispatchToProps)(Videos);
+ export default connect(mapStateToProps, mapDispatchToProps)(MyVideos);
