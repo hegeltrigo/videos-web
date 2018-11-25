@@ -24,6 +24,7 @@ export class Videos extends Component {
 
   componentDidMount() {
     this.props.actions.GetAllVideos()
+
     // this.setState({loading: false})
   }
 

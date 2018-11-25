@@ -23,7 +23,12 @@ const VIDEOS_API = `${API}/videos`
 // }
 
 const getAllVideos = () => {
-  return HttpClient.get(VIDEOS_API, { headers: authHeader() })
+  return HttpClient.get(VIDEOS_API)
+}
+
+const getAllMyVideos = () => {
+  return HttpClient.get(`${VIDEOS_API}/my_videos`, { headers: authHeader() })
+
 }
 
 //Update
@@ -42,5 +47,5 @@ const getAllVideos = () => {
 //Encapsulating in a JSON object
 
 // const TodoApi = {createTodo, getTodo, updateTodo, removeTodo}
-const VideosApi = { getAllVideos}
+const VideosApi = { getAllVideos, getAllMyVideos }
 export {VideosApi}

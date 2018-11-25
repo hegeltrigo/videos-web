@@ -1,12 +1,12 @@
 import { videoTypes } from '../types'
 
 
-const initialState = {
+const initialStateVideos = {
   videos: [],
-  loading: true
+  loading: true,
 }
 
-export const VideoListReducer = (state = initialState, action) => {
+export const VideoListReducer = (state = initialStateVideos, action) => {
     switch(action.type){
 
       case videoTypes.GET_ALL_VIDEOS_SUCCESS:
@@ -24,6 +24,31 @@ export const VideoListReducer = (state = initialState, action) => {
       default: 
         return state; 
     }
+}
+
+const initialStateMyVideos = {
+  videos: [],
+  loading: true,
+}
+
+export const MyVideoList = (state = initialStateMyVideos, action) => {
+  switch(action.type){
+
+    case videoTypes.GET_ALL_MY_VIDEOS:
+      return {
+        ...state,
+        videos: action.videos,
+        loading: false
+      }
+
+    case videoTypes.IS_LOADING_MY_VIDEOS:
+      return{
+        ...state,
+        loading: true
+      }
+    default: 
+      return state; 
+  }
 }
 
 // //The individual Reducer. It handles only one Todo Object.

@@ -31,9 +31,7 @@ export class Login extends Component {
     const { authentication } = this.props
     if(authentication.loggedIn)
     {
-      console.log('ENTRO')
       return <Redirect to='/' />
-
     }
 
     return (

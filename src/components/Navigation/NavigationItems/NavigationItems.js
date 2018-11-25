@@ -4,19 +4,23 @@ import NavigationItem from '../NavigationItems/NavigationItem/NavigationItem';
 import Button from '../../../UI/Button/Button'
 
 const navigationItems = (props) => {
-  let content;
+  let authItem;
+  let myVideosItem;
+
   if(props.authentication.loggedIn){
-    content = <Button buttonType="Success" clicked={props.clickedLogout}>Logout</Button>
+    myVideosItem = <NavigationItem link="/MyVideos">Mis Videos</NavigationItem>
+    authItem = <Button buttonType="Success" clicked={props.clickedLogout}>Logout</Button>
   }
   else{
-    content = <NavigationItem link="/Login">Login</NavigationItem>;
+    myVideosItem = ''
+    authItem = <NavigationItem link="/Login">Login</NavigationItem>;
   }
 
   return(
     <ul className={classes.NavigationItems}>
       <NavigationItem link="/" exact>Home</NavigationItem>
-      <NavigationItem link="/MyVideos">Mis Videos</NavigationItem>
-      {content}
+      {myVideosItem}
+      {authItem}
 
     </ul>
   );
