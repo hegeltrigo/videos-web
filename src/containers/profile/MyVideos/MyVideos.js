@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import classes from './MyVideos.css'
-import Video from '../../components/Video/Video'
-import Spinner from '../../UI/Spinner/Spinner'
+import Video from '../../../components/Video/Video'
+import Spinner from '../../../UI/Spinner/Spinner'
 import { connect } from 'react-redux'
 // import * as videosActions from '../../store/actions/videosActions'
 // import { bindActionCreators } from 'redux'
 
-import { GetAllMyVideos } from '../../store/actions/videosActions'
+import { GetAllMyVideos } from '../../../store/actions/videosActions'
 
 export class MyVideos extends Component {
 

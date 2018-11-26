@@ -4,10 +4,10 @@ import Video from '../../components/Video/Video'
 import Spinner from '../../UI/Spinner/Spinner'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import * as videosActions from '../../store/actions/videosActions'
-// import { bindActionCreators } from 'redux'
+import * as videosActions from '../../store/actions/videosActions'
+import { bindActionCreators } from 'redux'
 
-import { GetAllVideos } from '../../store/actions/videosActions'
+// import { GetAllVideos } from '../../store/actions/videosActions'
 
 export class Videos extends Component {
 
@@ -25,10 +25,12 @@ export class Videos extends Component {
   // }
 
   componentDidMount() {
-    const {HandleGetAllVideos} = this.props
-    console.log("PROPIEDADES",this.props)
+    // const {HandleGetAllVideos} = this.props
+    // console.log("PROPIEDADES",this.props)
 
-    HandleGetAllVideos()
+    // HandleGetAllVideos()
+
+    this.props.actions.GetAllVideos()
 
     // this.setState({loading: false})
   }
@@ -68,10 +70,16 @@ function mapStateToProps(state, ownProps) {
 
 // This maps the dispatch to the property of the component
 
-const mapDispatchToProps = dispatch => ({
-  HandleGetAllVideos () {
-    dispatch(GetAllVideos())
+// const mapDispatchToProps = dispatch => ({
+//   HandleGetAllVideos () {
+//     dispatch(GetAllVideos())
+//   }
+// })
+
+function mapDispatchToProps(dispatch) {
+  return {
+      actions: bindActionCreators(videosActions, dispatch)
   }
-})
+}
 
  export default connect(mapStateToProps, mapDispatchToProps)(Videos);
