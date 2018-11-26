@@ -6,7 +6,8 @@ const initialState = {
   loading: false,
   loggedIn: user ? true : false,
   user: null,
-  message: null
+  message: null,
+  error: false
 }
 
 export const authentication = (state = initialState, action) => {
@@ -15,6 +16,7 @@ export const authentication = (state = initialState, action) => {
       return { 
         ...state,
         loading: true,
+        error: false,
         message: 'Login Request' 
       }
     case userTypes.LOGIN_SUCCESS:
@@ -22,6 +24,7 @@ export const authentication = (state = initialState, action) => {
         ...state,
         loggedIn: true,
         loading: false,
+        error: false,
         user: action.response.data,
         message: 'Login Success'
       }
@@ -29,9 +32,11 @@ export const authentication = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        message: 'Login Failed'
+        message: action.errorMessage,
+        error: true
       }  
     case userTypes.LOGOUT:
+      console.log('LOGOUTssssssssssssssssss')
       return { 
         ...state,
         loggedIn: false,

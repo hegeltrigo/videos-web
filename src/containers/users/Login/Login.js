@@ -34,8 +34,16 @@ export class Login extends Component {
       return <Redirect to='/' />
     }
 
+    let errorMessage = null
+    if(authentication.error){
+      errorMessage = (
+        <p>Usuario o Password Inválido</p>
+      )
+    }
+
     return (
       <div className={classes.Login}>
+        {errorMessage}
         <form onSubmit={this.handleSubmit} className={classes.form}>
           <div className={classes.Logo}><Logo/></div>
           <div>

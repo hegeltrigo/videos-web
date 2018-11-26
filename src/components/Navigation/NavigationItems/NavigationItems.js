@@ -9,7 +9,7 @@ const navigationItems = (props) => {
 
   if(props.authentication.loggedIn){
     myVideosItem = <NavigationItem link="/MyVideos">Mis Videos</NavigationItem>
-    authItem = <Button buttonType="Success" clicked={props.clickedLogout}>Logout</Button>
+    authItem = <NavigationItem link="/Logout">Logout</NavigationItem>
   }
   else{
     myVideosItem = ''

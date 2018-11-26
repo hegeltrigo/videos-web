@@ -10,14 +10,14 @@ export const login = (user) => {
           localStorage.setItem('user', JSON.stringify(data));
           return dispatch(loginSuccess(res));
       }).catch((e) => {
-        console.log(e);
+        return dispatch(loginFailure(e));
       })
   }
 }
 
 const loginRequest = () => { return { type: userTypes.LOGIN_REQUEST }}
 const loginSuccess = (response) => { return { type: userTypes.LOGIN_SUCCESS, response } }
-const loginFailure = ()=> { return { type: userTypes.LOGIN_FAILURE } }
+const loginFailure = (errorMessage)=> { return { type: userTypes.LOGIN_FAILURE, errorMessage } }
 
 export const logout = () => {
 
