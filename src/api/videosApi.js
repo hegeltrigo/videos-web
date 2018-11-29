@@ -13,9 +13,9 @@ const VIDEOS_API = `${API}/videos`
 
 
 //Create
-// const createTodo = todo => {
-//     return HttpClient.post(TODO_API, todo)
-// }
+const createVideo = video => {
+    return HttpClient.post(VIDEOS_API, video, { headers: authHeader() })
+}
 
 //Read
 // const getTodo = () => {
@@ -47,5 +47,5 @@ const getAllMyVideos = () => {
 //Encapsulating in a JSON object
 
 // const TodoApi = {createTodo, getTodo, updateTodo, removeTodo}
-const VideosApi = { getAllVideos, getAllMyVideos }
+const VideosApi = { getAllVideos, getAllMyVideos, createVideo }
 export {VideosApi}

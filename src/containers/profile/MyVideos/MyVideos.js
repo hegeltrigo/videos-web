@@ -3,6 +3,10 @@ import classes from './MyVideos.css'
 import Video from '../../../components/Video/Video'
 import Spinner from '../../../UI/Spinner/Spinner'
 import { connect } from 'react-redux'
+import NewVideo from '../NewVideo/NewVideo'
+import Modal from '../../../UI/Modal/Modal'
+import Button from '../../../UI/Button/Button'
+
 // import * as videosActions from '../../store/actions/videosActions'
 // import { bindActionCreators } from 'redux'
 
@@ -14,26 +18,46 @@ export class MyVideos extends Component {
     super(props)
   }
 
-  // static propTypes = {
-  //   prop: PropTypes
-  // }
-  
-  // state = {
-  //   //videos: [],
-  //   loading: true
-  // }
+  state = {
+    creatingVideo: false,
+    closeModal: true,
+  }
 
   componentDidMount() {
     const {HandleGetAllMyVideos} = this.props
-    console.log("PROPIEDADES", this.props)
-
     HandleGetAllMyVideos()
-
-    // this.setState({loading: false})
   }
+
+  componentWillReceiveProps =(newProps) =>{
+
+    if(newProps.createdVideoSucces){
+      console.log('SE CREO BIEN');
+      let id = document.getElementById("backdrop");
+      if(id){
+        id.click();
+      }
+    }
+  }
+
+  clickedOpenNewVideo = () => {
+    this.setState({creatingVideo: true})
+  }
+
+  closeModalOnClickBackdropHandler = (e) => {
+    e.preventDefault();
+    this.setState((prevState) => {
+      return {creatingVideo: !this.state.creatingVideo}
+    });
+  } 
+
+  // closeModalOnClickButton = (e) =>{
+  //   e.preventDefault();
+  //   this.closeModalOnClickBackdropHandler()
+  // }
 
   render() {
     let content;
+
     if(this.props.loading){
       content = <Spinner/>;
     }
@@ -42,30 +66,37 @@ export class MyVideos extends Component {
          return <Video key={video.id} title={video.title} youtube_video_id={video.youtube_video_id}/>
        }); 
     }
+
+    // if(this.props.createdVideoSucces){
+    //   console.log('AQUI EN ESTA ACCION SE TIENE OCULTAR EL MODAL');
+    //   this.closeModalOnClickBackdropHandler.bind(this)
+    // }
+    
     return (
-      <div className={classes.MyVideos}>
-        {content}
+      <div>
+
+         <Button buttonType='Success' clicked={this.clickedOpenNewVideo}>Nuevo Video</Button>
+         <Modal show={this.state.creatingVideo} modalClosed={this.closeModalOnClickBackdropHandler}>
+            <NewVideo closeModalOnClickButton={this.closeModalOnClickBackdropHandler}/>
+         </Modal>
+         <div className={classes.MyVideos}>
+          {content}
+        </div>
       </div>
+     
     )
   }
 }
 
-// Videos.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   videos: PropTypes.array.isRequired
-// }
-
-
-// This maps the state to the property of the component
-
 function mapStateToProps(state, ownProps) {
   return {
+      authentication: state.authentication,
       vids: state.MyVideoList.videos,
-      loading: state.MyVideoList.loading
+      loading: state.MyVideoList.loading,
+      creatingVideo: state.MyVideoList.creatingVideo, 
+      createdVideoSucces: state.MyVideoList.createdVideoSucces
   }
 }
-
-// This maps the dispatch to the property of the component
 
 const mapDispatchToProps = dispatch => ({
   HandleGetAllMyVideos () {
@@ -73,4 +104,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
- export default connect(mapStateToProps, mapDispatchToProps)(MyVideos);
+export default connect(mapStateToProps, mapDispatchToProps)(MyVideos);

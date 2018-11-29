@@ -15,24 +15,8 @@ export class Videos extends Component {
     super(props)
   }
 
-  // static propTypes = {
-  //   prop: PropTypes
-  // }
-  
-  // state = {
-  //   //videos: [],
-  //   loading: true
-  // }
-
   componentDidMount() {
-    // const {HandleGetAllVideos} = this.props
-    // console.log("PROPIEDADES",this.props)
-
-    // HandleGetAllVideos()
-
     this.props.actions.GetAllVideos()
-
-    // this.setState({loading: false})
   }
 
   render() {
@@ -53,13 +37,6 @@ export class Videos extends Component {
   }
 }
 
-// Videos.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   videos: PropTypes.array.isRequired
-// }
-
-
-// This maps the state to the property of the component
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -67,14 +44,6 @@ function mapStateToProps(state, ownProps) {
       loading: state.VideoListReducer.loading
   }
 }
-
-// This maps the dispatch to the property of the component
-
-// const mapDispatchToProps = dispatch => ({
-//   HandleGetAllVideos () {
-//     dispatch(GetAllVideos())
-//   }
-// })
 
 function mapDispatchToProps(dispatch) {
   return {

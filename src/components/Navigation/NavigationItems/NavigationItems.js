@@ -5,14 +5,15 @@ import Button from '../../../UI/Button/Button'
 
 const navigationItems = (props) => {
   let authItem;
-  let myVideosItem;
+  let myVideosItem ='';
+  let newVideo = '';
 
   if(props.authentication.loggedIn){
     myVideosItem = <NavigationItem link="/MyVideos">Mis Videos</NavigationItem>
+    newVideo = <NavigationItem link="/NewVideo">Nuevo Video</NavigationItem>
     authItem = <NavigationItem link="/Logout">Logout</NavigationItem>
   }
   else{
-    myVideosItem = ''
     authItem = <NavigationItem link="/Login">Login</NavigationItem>;
   }
 
@@ -20,6 +21,7 @@ const navigationItems = (props) => {
     <ul className={classes.NavigationItems}>
       <NavigationItem link="/" exact>Home</NavigationItem>
       {myVideosItem}
+      {newVideo}
       {authItem}
 
     </ul>

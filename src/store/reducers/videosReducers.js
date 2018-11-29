@@ -29,6 +29,9 @@ export const VideoListReducer = (state = initialStateVideos, action) => {
 const initialStateMyVideos = {
   videos: [],
   loading: true,
+  creatingVideo: false,
+  createdVideoSucces: false,
+  ErrorVideo: false
 }
 
 export const MyVideoList = (state = initialStateMyVideos, action) => {
@@ -46,6 +49,25 @@ export const MyVideoList = (state = initialStateMyVideos, action) => {
         ...state,
         loading: true
       }
+    case videoTypes.CREATE_VIDEO_REQUEST:
+      return{
+        ...state,
+        creatingVideo: true
+      }  
+    case videoTypes.CREATE_VIDEO_SUCCESS:
+      return{
+        ...state,
+        videos: [...state.videos, action.response.data],
+        creatingVideo: false,
+        createdVideoSucces: true
+      }  
+    case videoTypes.CREATE_VIDEO_FAILURE:
+      return{
+        ...state,
+        ErrorVideo: true,
+        creatingVideo: false,
+        createdVideoSucces: false
+      }    
     default: 
       return state; 
   }

@@ -36,7 +36,6 @@ export const authentication = (state = initialState, action) => {
         error: true
       }  
     case userTypes.LOGOUT:
-      console.log('LOGOUTssssssssssssssssss')
       return { 
         ...state,
         loggedIn: false,
