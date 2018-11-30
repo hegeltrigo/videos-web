@@ -46,9 +46,9 @@ export class Video extends Component {
       search: '?id=' + this.props.videoId
     }}>{this.props.title}</Link></div> : ''  }
             {this.props.showButtons ? 
-              <div className={classes.Buttons}>
+              <div className={classes.Buttons1}>
                 {this.props.title}
-                <div className={classes.Buttons}>
+                <div className={classes.Buttons2}>
                   
                   <Button buttonType="Success" clicked={this.props.onDelete}>Eliminar</Button>
                   <Button buttonType="Primary" clicked={ (e) => this.clickedOpenNewVideo(this.props.videoId)}>Editar</Button>
