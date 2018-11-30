@@ -32,7 +32,9 @@ const initialStateMyVideos = {
   creatingVideo: false,
   createdVideoSucces: false,
   ErrorVideo: false,
-  removeVideo: {video: {}, loading: false, error: false}
+  removeVideo: {video: {}, loading: false, error: false},
+  getVideo: {video: {}, loading: false, error: false}
+
 }
 
 export const MyVideoList = (state = initialStateMyVideos, action) => {
@@ -84,7 +86,23 @@ export const MyVideoList = (state = initialStateMyVideos, action) => {
         ...state,
         removeVideo: { video: {}, loading: false, error: true }
 
-      }      
+      }  
+    case videoTypes.GET_VIDEO_REQUEST:
+      return{
+        ...state,
+        getVideo: { ...state.getVideo, loading: true },
+
+      }  
+    case videoTypes.GET_VIDEO_SUCCESS:
+      return{
+        ...state,
+        getVideo: {video: action.response.data, loading: false }
+      }  
+    case videoTypes.GET_VIDEO_FAILURE:
+      return{
+        ...state,
+        getVideo: { video: {}, loading: false, error: true }
+      }          
     default: 
       return state; 
   }

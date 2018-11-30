@@ -10,7 +10,7 @@ const navigationItems = (props) => {
 
   if(props.authentication.loggedIn){
     myVideosItem = <NavigationItem link="/MyVideos">Mis Videos</NavigationItem>
-    newVideo = <NavigationItem link="/NewVideo">Nuevo Video</NavigationItem>
+    // newVideo = <NavigationItem link="/NewVideo">Nuevo Video</NavigationItem>
     authItem = <NavigationItem link="/Logout">Logout</NavigationItem>
   }
   else{

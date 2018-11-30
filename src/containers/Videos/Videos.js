@@ -26,7 +26,7 @@ export class Videos extends Component {
     }
     else{
       content = this.props.vids.map((video,index) => {
-         return <Video key={video.id} title={video.title} youtube_video_id={video.youtube_video_id}/>
+         return <Video videoId={video.id} showButtons={false} key={video.id} title={video.title} youtube_video_id={video.youtube_video_id}/>
        }); 
     }
     return (

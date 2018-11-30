@@ -59,3 +59,18 @@ export const removeVideo = (index,id) => {
 const removeVideoRequest = () => { return { type: videoTypes.REMOVE_VIDEO_REQUEST }}
 const removeVideoSuccess = (response, index) => { return { type: videoTypes.REMOVE_VIDEO_SUCCESS, response, index }}
 const removeVideoFailure = (errorMessage) => { return { type: videoTypes.REMOVE_VIDEO_FAILURE, errorMessage }}
+
+export const getVideo = (id) => {
+  return (dispatch) => {
+    dispatch(getVideoRequest())
+    VideosApi.getVideo(id).then(res => {
+        return dispatch(getVideoSuccess(res));
+    }).catch((e) => {
+      return dispatch(getVideoFailure(e));
+    })
+  }
+}
+
+const getVideoRequest = () => { return { type: videoTypes.GET_VIDEO_REQUEST }}
+const getVideoSuccess = (response) => { return { type: videoTypes.GET_VIDEO_SUCCESS, response }}
+const getVideoFailure = (errorMessage) => { return { type: videoTypes.GET_VIDEO_FAILURE, errorMessage }}

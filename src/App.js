@@ -5,7 +5,7 @@ import {Route} from 'react-router-dom'
 import MyVideos  from './containers/profile/MyVideos/MyVideos';
 import Login from './containers/users/Login/Login'
 import Logout from './containers/users/Logout/Logout'
-import NewVideo from './containers/profile/NewVideo/NewVideo'
+import ShowVideo from './containers/Videos/ShowVideo/ShowVideo'
 
 class App extends Component {
 
@@ -16,7 +16,7 @@ class App extends Component {
            <Route path="/" exact component={Videos}/>
            <Route path="/MyVideos" component={MyVideos}/>
            <Route path="/Logout" component={Logout}/>
-           <Route path="/NewVideo" component={NewVideo}/>
+           <Route path="/ShowVideo" component={ShowVideo}/>
 
 
            <Route path="/Login" component={Login}/>

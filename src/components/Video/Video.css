@@ -18,6 +18,13 @@
   font-weight: bold;
 }
 
+
+.Buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -43,6 +50,25 @@
     cursor: pointer;
   }
 
+  .Buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  a{
+    color: white;
+    
+  }
+
+  a:link{
+    text-decoration: none;
+  }
+
+  a:hover{
+    color: grey;
+  }
   
 }
 

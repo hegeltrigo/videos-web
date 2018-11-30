@@ -72,7 +72,7 @@ export class MyVideos extends Component {
     }
     else{
       content = this.props.vids.map((video,index) => {
-         return <Video key={video.id} onDelete={ () => this.onDeleteHandler(index, video.id)} title={video.title} youtube_video_id={video.youtube_video_id}/>
+         return <Video showButtons={true} key={video.id} onDelete={ () => this.onDeleteHandler(index, video.id)} title={video.title} youtube_video_id={video.youtube_video_id}/>
        }); 
     }
 
@@ -83,8 +83,9 @@ export class MyVideos extends Component {
     
     return (
       <div>
-
-         <Button buttonType='Success' clicked={this.clickedOpenNewVideo}>Nuevo Video</Button>
+         <div className={classes.rightButton}>
+          <Button buttonType='Success' clicked={this.clickedOpenNewVideo}>Nuevo Video</Button>
+         </div>
          <Modal show={this.state.creatingVideo} modalClosed={this.closeModalOnClickBackdropHandler}>
             <NewVideo closeModalOnClickButton={this.closeModalOnClickBackdropHandler}/>
          </Modal>
