@@ -21,9 +21,24 @@
 
 .Buttons{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
 }
+
+a{
+  color: white;
+  
+}
+
+a:link{
+  text-decoration: none;
+}
+
+a:hover{
+  color: grey;
+}
+
 
 /* 
   ##Device = Desktops
@@ -46,6 +61,7 @@
     text-transform: capitalize;
     font-weight: bold;
   }
+
   .Video:hover{
     cursor: pointer;
   }

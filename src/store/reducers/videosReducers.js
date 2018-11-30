@@ -33,8 +33,9 @@ const initialStateMyVideos = {
   createdVideoSucces: false,
   ErrorVideo: false,
   removeVideo: {video: {}, loading: false, error: false},
-  getVideo: {video: {}, loading: false, error: false}
-
+  getVideo: {video: {}, loading: false, error: false},
+  updateVideo: {video: {}, loading: false, error: false},
+  currentVideo: {video: {title: '', description: '', video_url: ''}, loading: false, error: false, success: false, action: ''}
 }
 
 export const MyVideoList = (state = initialStateMyVideos, action) => {
@@ -54,21 +55,18 @@ export const MyVideoList = (state = initialStateMyVideos, action) => {
     case videoTypes.CREATE_VIDEO_REQUEST:
       return{
         ...state,
-        creatingVideo: true
+        currentVideo: { ...state.currentVideo, loading: true, action: 'create' }
       }  
     case videoTypes.CREATE_VIDEO_SUCCESS:
       return{
         ...state,
         videos: [...state.videos, action.response.data],
-        creatingVideo: false,
-        createdVideoSucces: true
+        currentVideo: {video: {title: '', description: '', video_url: ''}, loading: false, success: true }
       }  
     case videoTypes.CREATE_VIDEO_FAILURE:
       return{
         ...state,
-        ErrorVideo: true,
-        creatingVideo: false,
-        createdVideoSucces: false
+        currentVideo: {video: {}, loading: false, success: false }
       }    
     case videoTypes.REMOVE_VIDEO_REQUEST:
       return{
@@ -103,6 +101,21 @@ export const MyVideoList = (state = initialStateMyVideos, action) => {
         ...state,
         getVideo: { video: {}, loading: false, error: true }
       }          
+    case videoTypes.UPDATE_VIDEO_REQUEST:
+      return{
+        ...state,
+        updateVideo: { ...state.updateVideo, loading: true },
+      }  
+    case videoTypes.UPDATE_VIDEO_SUCCESS:
+      return{
+        ...state,
+        updateVideo: {video: action.response.data, loading: false }
+      }  
+    case videoTypes.UPDATE_VIDEO_FAILURE:
+      return{
+        ...state,
+        updateVideo: { video: {}, loading: false, error: true }
+      }            
     default: 
       return state; 
   }

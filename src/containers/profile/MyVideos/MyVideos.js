@@ -32,7 +32,7 @@ export class MyVideos extends Component {
   }
 
   componentWillReceiveProps =(newProps) =>{
-    if(newProps.createdVideoSucces){
+    if(newProps.video.success){
       let id = document.getElementById("backdrop");
       if(id){
         id.click();
@@ -52,7 +52,6 @@ export class MyVideos extends Component {
   } 
 
   onDeleteHandler = (index,id) => {
-    // console.log('BORRAR EL ID', index,id)
 
     const {removeVideo} = this.props
 
@@ -72,7 +71,7 @@ export class MyVideos extends Component {
     }
     else{
       content = this.props.vids.map((video,index) => {
-         return <Video showButtons={true} key={video.id} onDelete={ () => this.onDeleteHandler(index, video.id)} title={video.title} youtube_video_id={video.youtube_video_id}/>
+         return <Video videoId={video.id} showButtons={true} key={video.id} onDelete={ () => this.onDeleteHandler(index, video.id)} title={video.title} youtube_video_id={video.youtube_video_id}/>
        }); 
     }
 
@@ -87,7 +86,7 @@ export class MyVideos extends Component {
           <Button buttonType='Success' clicked={this.clickedOpenNewVideo}>Nuevo Video</Button>
          </div>
          <Modal show={this.state.creatingVideo} modalClosed={this.closeModalOnClickBackdropHandler}>
-            <NewVideo closeModalOnClickButton={this.closeModalOnClickBackdropHandler}/>
+            <NewVideo new={true} title={'Nuevo Video'} closeModalOnClickButton={this.closeModalOnClickBackdropHandler}/>
          </Modal>
          <div className={classes.MyVideos}>
           {content}
@@ -103,9 +102,8 @@ function mapStateToProps(state, ownProps) {
       authentication: state.authentication,
       vids: state.MyVideoList.videos,
       loading: state.MyVideoList.loading,
-      creatingVideo: state.MyVideoList.creatingVideo, 
-      createdVideoSucces: state.MyVideoList.createdVideoSucces,
-      removeVideo: state.MyVideoList.removeVideo
+      removeVideo: state.MyVideoList.removeVideo,
+      video: state.MyVideoList.currentVideo
   }
 }
 

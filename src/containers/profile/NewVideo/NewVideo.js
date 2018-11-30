@@ -8,21 +8,39 @@ import classes from './NewVideo.css'
 
 
 export class NewVideo extends Component {
-  state = {
-    token: '',
-    form: {}
+  
+
+  constructor(props) {
+    super(props);
+    this.state = { form: {  title: props.video.video.title,
+                            description: props.video.video.description,
+                            video_url: props.video.video.video_url
+                          } 
+                  }               
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({form: nextProps.video.video})   
   }
 
   onSubmitHandler = (e) =>{
     e.preventDefault()
-    const {handleOnSave} = this.props
-    handleOnSave(this.state.form)
+
+    if(this.props.new){
+      const {handleOnSave} = this.props
+      handleOnSave(this.state.form)
+    }
+    else{
+      console.log('AQUI TENDRIAMOS QUE HACER UN UPDATE')
+    }
+    
   }
 
   render() {
     let content;
+    let {video}  = this.props
     
-    if(this.props.creatingVideo){
+    if(video.loading){
       content = <Spinner/>;
     }
     else{
@@ -32,22 +50,20 @@ export class NewVideo extends Component {
                 this.setState({
                   form: { ...this.state.form, title: ev.target.value }
                 })
-              }} value={this.state.form.title}/><br></br><br></br>
+              }} /><br></br><br></br>
           <input type="text" name="description" className={classes.inputText} placeholder="Descripción" onChange={ev => {
                 this.setState({
                   form: { ...this.state.form, description: ev.target.value }
                 })
-              }} value={this.state.form.description} /><br></br><br></br>
+              }} /><br></br><br></br>
           <input type="text" name="video_url" className={classes.inputText} placeholder="url"onChange={ev => {
                 this.setState({
                   form: { ...this.state.form, video_url: ev.target.value }
                 })
-              }} value={this.state.form.video_url} /><br></br><br></br>
+              }}  /><br></br><br></br>
           <br></br>    
-          {/* <input type="button" name="myButton" onClick={this.onSubmitHandler} value="Guardar"/> */}
           <Button buttonType='Success' clicked={this.onSubmitHandler}>Guardar</Button><span>&nbsp;&nbsp;</span>
           <Button id="closeButton" buttonType='Danger' clicked={this.props.closeModalOnClickButton}>Cancelar</Button>
-
         </form>
       )
     }
@@ -55,7 +71,7 @@ export class NewVideo extends Component {
     return (
       <div className={classes.NewVideo}>
         <div>
-          <h1>Nuevo video</h1>
+          <h1>{this.props.title}</h1>
           {content}
         </div>
         
@@ -66,8 +82,7 @@ export class NewVideo extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-      creatingVideo: state.MyVideoList.creatingVideo,
-      createdVideoSucces: state.MyVideoList.createdVideoSucces
+      video: state.MyVideoList.currentVideo
   }
 }
 

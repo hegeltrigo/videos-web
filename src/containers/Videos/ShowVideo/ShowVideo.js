@@ -32,7 +32,6 @@ export class ShowVideo extends Component {
     }
     return (
       <div>
-        <h1>Show Video</h1>
         {content}
       </div>
     )

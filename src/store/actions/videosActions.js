@@ -74,3 +74,18 @@ export const getVideo = (id) => {
 const getVideoRequest = () => { return { type: videoTypes.GET_VIDEO_REQUEST }}
 const getVideoSuccess = (response) => { return { type: videoTypes.GET_VIDEO_SUCCESS, response }}
 const getVideoFailure = (errorMessage) => { return { type: videoTypes.GET_VIDEO_FAILURE, errorMessage }}
+
+export const updateVideo = (video) => {
+  return (dispatch) => {
+    dispatch(updateVideoRequest())
+    VideosApi.updateVideo(video).then(res => {
+        return dispatch(updateVideoSuccess(res));
+    }).catch((e) => {
+      return dispatch(updateVideoFailure(e));
+    })
+  }
+}
+
+const updateVideoRequest = () => { return { type: videoTypes.UPDATE_VIDEO_REQUEST }}
+const updateVideoSuccess = (response) => { return { type: videoTypes.UPDATE_VIDEO_SUCCESS, response }}
+const updateVideoFailure = (errorMessage) => { return { type: videoTypes.UPDATE_VIDEO_FAILURE, errorMessage }}
