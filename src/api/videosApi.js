@@ -37,15 +37,13 @@ const getAllMyVideos = () => {
 // }
 
 //Delete
-// const removeTodo = todo => {
-//     return HttpClient.delete(`${TODO_API}/${todo._id}`)
-// }
-
-
+const removeVideo = id => {
+    return HttpClient.delete(`${VIDEOS_API}/${id}`, { headers: authHeader() })
+}
 
 
 //Encapsulating in a JSON object
 
 // const TodoApi = {createTodo, getTodo, updateTodo, removeTodo}
-const VideosApi = { getAllVideos, getAllMyVideos, createVideo }
+const VideosApi = { getAllVideos, getAllMyVideos, createVideo, removeVideo }
 export {VideosApi}

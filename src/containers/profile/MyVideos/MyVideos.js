@@ -7,10 +7,13 @@ import NewVideo from '../NewVideo/NewVideo'
 import Modal from '../../../UI/Modal/Modal'
 import Button from '../../../UI/Button/Button'
 
+
 // import * as videosActions from '../../store/actions/videosActions'
 // import { bindActionCreators } from 'redux'
 
 import { GetAllMyVideos } from '../../../store/actions/videosActions'
+import { removeVideo } from '../../../store/actions/videosActions'
+
 
 export class MyVideos extends Component {
 
@@ -29,9 +32,7 @@ export class MyVideos extends Component {
   }
 
   componentWillReceiveProps =(newProps) =>{
-
     if(newProps.createdVideoSucces){
-      console.log('SE CREO BIEN');
       let id = document.getElementById("backdrop");
       if(id){
         id.click();
@@ -50,6 +51,14 @@ export class MyVideos extends Component {
     });
   } 
 
+  onDeleteHandler = (index,id) => {
+    // console.log('BORRAR EL ID', index,id)
+
+    const {removeVideo} = this.props
+
+    removeVideo(index,id)
+  }
+
   // closeModalOnClickButton = (e) =>{
   //   e.preventDefault();
   //   this.closeModalOnClickBackdropHandler()
@@ -63,7 +72,7 @@ export class MyVideos extends Component {
     }
     else{
       content = this.props.vids.map((video,index) => {
-         return <Video key={video.id} title={video.title} youtube_video_id={video.youtube_video_id}/>
+         return <Video key={video.id} onDelete={ () => this.onDeleteHandler(index, video.id)} title={video.title} youtube_video_id={video.youtube_video_id}/>
        }); 
     }
 
@@ -94,13 +103,17 @@ function mapStateToProps(state, ownProps) {
       vids: state.MyVideoList.videos,
       loading: state.MyVideoList.loading,
       creatingVideo: state.MyVideoList.creatingVideo, 
-      createdVideoSucces: state.MyVideoList.createdVideoSucces
+      createdVideoSucces: state.MyVideoList.createdVideoSucces,
+      removeVideo: state.MyVideoList.removeVideo
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   HandleGetAllMyVideos () {
     dispatch(GetAllMyVideos())
+  },
+  removeVideo (index,id) {
+    dispatch(removeVideo(index,id))
   }
 })
 

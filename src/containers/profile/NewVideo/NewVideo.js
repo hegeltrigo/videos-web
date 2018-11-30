@@ -16,13 +16,11 @@ export class NewVideo extends Component {
     e.preventDefault()
     const {handleOnSave} = this.props
     handleOnSave(this.state.form)
-    // if(!this.props.videoError){
-    //   this.props.closeModalOnClickButton(e);
-    // }
   }
 
   render() {
     let content;
+    
     if(this.props.creatingVideo){
       content = <Spinner/>;
     }
@@ -33,17 +31,17 @@ export class NewVideo extends Component {
                 this.setState({
                   form: { ...this.state.form, title: ev.target.value }
                 })
-              }}/><br></br><br></br>
+              }} value={this.state.form.title}/><br></br><br></br>
           <input type="text" name="description" placeholder="Descripción" onChange={ev => {
                 this.setState({
                   form: { ...this.state.form, description: ev.target.value }
                 })
-              }}/><br></br><br></br>
+              }} value={this.state.form.description} /><br></br><br></br>
           <input type="text" name="video_url" placeholder="url"onChange={ev => {
                 this.setState({
                   form: { ...this.state.form, video_url: ev.target.value }
                 })
-              }}/><br></br><br></br>
+              }} value={this.state.form.video_url} /><br></br><br></br>
 
           {/* <input type="button" name="myButton" onClick={this.onSubmitHandler} value="Guardar"/> */}
           <Button buttonType='Success' clicked={this.onSubmitHandler}>Guardar</Button>
@@ -51,10 +49,6 @@ export class NewVideo extends Component {
 
         </form>
       )
-    }
-
-    if(this.props.ErrorVideo){
-      //show message error 
     }
 
     return (
@@ -69,7 +63,7 @@ export class NewVideo extends Component {
 function mapStateToProps(state, ownProps) {
   return {
       creatingVideo: state.MyVideoList.creatingVideo,
-      ErrorVideo: state.MyVideoList.ErrorVideo
+      createdVideoSucces: state.MyVideoList.createdVideoSucces
   }
 }
 

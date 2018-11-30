@@ -31,7 +31,8 @@ const initialStateMyVideos = {
   loading: true,
   creatingVideo: false,
   createdVideoSucces: false,
-  ErrorVideo: false
+  ErrorVideo: false,
+  removeVideo: {video: {}, loading: false, error: false}
 }
 
 export const MyVideoList = (state = initialStateMyVideos, action) => {
@@ -43,7 +44,6 @@ export const MyVideoList = (state = initialStateMyVideos, action) => {
          videos: action.videos,
          loading: false 
       }
-
     case videoTypes.IS_LOADING_MY_VIDEOS:
       return{
         ...state,
@@ -68,6 +68,23 @@ export const MyVideoList = (state = initialStateMyVideos, action) => {
         creatingVideo: false,
         createdVideoSucces: false
       }    
+    case videoTypes.REMOVE_VIDEO_REQUEST:
+      return{
+        ...state,
+        removeVideo: { ...state.removeVideo, loading: true }
+      }  
+    case videoTypes.REMOVE_VIDEO_SUCCESS:
+      return{
+        ...state,
+        removeVideo: { video: action.response.data, loading: false },
+        videos: state.videos.filter((obj,index) => {return action.index !== index})
+      }  
+    case videoTypes.REMOVE_VIDEO_FAILURE:
+      return{
+        ...state,
+        removeVideo: { video: {}, loading: false, error: true }
+
+      }      
     default: 
       return state; 
   }

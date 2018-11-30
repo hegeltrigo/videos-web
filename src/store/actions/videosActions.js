@@ -43,3 +43,19 @@ export const createVideo = (video) => {
 const createVideoRequest = () => { return { type: videoTypes.CREATE_VIDEO_REQUEST }}
 const createVideoSuccess = (response) => { return { type: videoTypes.CREATE_VIDEO_SUCCESS, response }}
 const createVideoFailure = (errorMessage) => { return { type: videoTypes.CREATE_VIDEO_FAILURE, errorMessage }}
+
+
+export const removeVideo = (index,id) => {
+  return (dispatch) => {
+    dispatch(removeVideoRequest())
+    VideosApi.removeVideo(id).then(res => {
+        return dispatch(removeVideoSuccess(res, index));
+    }).catch((e) => {
+      return dispatch(removeVideoFailure(e));
+    })
+  }
+}
+
+const removeVideoRequest = () => { return { type: videoTypes.REMOVE_VIDEO_REQUEST }}
+const removeVideoSuccess = (response, index) => { return { type: videoTypes.REMOVE_VIDEO_SUCCESS, response, index }}
+const removeVideoFailure = (errorMessage) => { return { type: videoTypes.REMOVE_VIDEO_FAILURE, errorMessage }}
